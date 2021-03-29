@@ -1,4 +1,4 @@
-# Scenario
+# SCENARIO
 
 이 앱은 고객용과 관리자용으로 나뉜다. 
 
