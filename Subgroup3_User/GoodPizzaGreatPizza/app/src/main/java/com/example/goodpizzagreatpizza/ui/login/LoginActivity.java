@@ -132,6 +132,7 @@ private ActivityLoginBinding binding;
                 startActivity(intent);
             }
         });
+
     }
 
     private void updateUiWithUser(LoggedInUserView model) {
