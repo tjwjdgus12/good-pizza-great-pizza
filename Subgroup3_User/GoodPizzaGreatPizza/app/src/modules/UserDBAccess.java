@@ -23,8 +23,8 @@ public class UserDBAccess {
 		return false;
 	}
 	
-	public boolean add(Token t) {
-		userDB.add(new String[] {t.id, t.pw, "", "", ""});
+	public boolean add(String id, String pw, String name, String address, String phonenum) {
+		userDB.add(new String[] {id, pw, name, address, phonenum});
 		
 		return true;
 	}

@@ -37,7 +37,7 @@ public class SignController {
 		
 	}
 	
-	public String sign_up(String id, String pw) {	//회원가입
+	public String sign_up(String id, String pw, String name, String address, String phonenum) {	//회원가입
 		
 		/*
 		 * 	Succes : 회원가입 성공
@@ -51,7 +51,7 @@ public class SignController {
 		if(DB.find(t)) {
 			return "Already Exist";
 		}
-		if(DB.add(t)) {
+		if(DB.add(id, pw, name, address, phonenum)) {
 			return "Success";
 		} else {
 			return "Signup Failed";
