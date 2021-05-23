@@ -1,26 +1,21 @@
-
+package  com.example.goodpizzagreatpizza.ui.login;
 public class SignController {
 	
-	UserDBAccess DB;
-	LoginManager loginManager;
+	static private UserDBAccess DB;
+	static private LoginManager loginManager;
 	
 	public SignController() {
-		DB = new UserDBAccess();
-		loginManager = new LoginManager();
+		if(DB == null)
+			DB = new UserDBAccess();
+		if(loginManager == null)
+			loginManager = new LoginManager();
 	}
 	
 	public int test() {
 		return 1;
 	}
 	
-	public String sign_in(String id, String pw) {	//로그인
-		
-		/*
-		 * 	Success : 성공
-		 * 	Wrong Input : 잘못된 아이디 or 비밀번호
-		 * 	Signin Failed : 로그인 중 버그 발생
-		 *
-		 */
+	public String sign_in(String id, String pw) {
 		
 		
 		Token t = new Token(id, pw);
@@ -37,17 +32,11 @@ public class SignController {
 		
 	}
 	
-	public String sign_up(String id, String pw, String name, String address, String phonenum) {	//회원가입
-		
-		/*
-		 * 	Succes : 회원가입 성공
-		 * 	Already Exist : 이미 아이디가 있음
-		 * 	Signup Failed : 회원가입 중 실패
-		 * 
-		 */
+	public String sign_up(String id, String pw, String name, String address, String phonenum){
 		
 		
 		Token t = new Token(id, pw);
+
 		if(DB.find(t)) {
 			return "Already Exist";
 		}
@@ -56,5 +45,6 @@ public class SignController {
 		} else {
 			return "Signup Failed";
 		}
+
 	}
 }

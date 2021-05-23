@@ -1,4 +1,4 @@
-
+package  com.example.goodpizzagreatpizza.ui.login;
 public class Profile {
 	public Token authToken;
 	public String name;

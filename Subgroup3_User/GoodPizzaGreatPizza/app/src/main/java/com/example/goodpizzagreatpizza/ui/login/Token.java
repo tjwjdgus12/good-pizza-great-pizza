@@ -1,4 +1,4 @@
-
+package  com.example.goodpizzagreatpizza.ui.login;
 public class Token {
 	public String id;
 	public String pw;

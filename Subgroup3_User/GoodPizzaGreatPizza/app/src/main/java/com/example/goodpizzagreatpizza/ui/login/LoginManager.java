@@ -1,5 +1,7 @@
+package  com.example.goodpizzagreatpizza.ui.login;
+
 public class LoginManager {
-	private Profile loginStatus;
+	private static Profile loginStatus;
 	
 	public boolean is_login() {
 		if(loginStatus == null) {
