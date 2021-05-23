@@ -1,4 +1,5 @@
 package com.example.goodpizzagreatpizza.ui.login;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -31,6 +32,15 @@ public class SignupActivity extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener(){
             @Override
 
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+        Button signupbtn = (Button) findViewById(R.id.request);
+        signupbtn.setOnClickListener(new View.OnClickListener(){
+            @Override
+
             public void onClick(View v){
                 String msg = signController.sign_up(idEdit.getText().toString(),
                         pwEdit.getText().toString(), nameEdit.getText().toString(),
@@ -55,5 +65,7 @@ public class SignupActivity extends AppCompatActivity {
             }
 
         });
+
+
     }
 }
