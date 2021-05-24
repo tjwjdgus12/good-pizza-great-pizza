@@ -3,7 +3,7 @@ package com.example.store;
 import android.media.Image;
 
 //Is it right to use Image class?
-public class Menu {
+public class PMenu {
     private String name;
     private int price;
     private Image img;
@@ -18,10 +18,14 @@ public class Menu {
         return this.img;
     }
 
-    public Menu(){}
-    public Menu(String _name, int _price, Image _img){
+    public PMenu(){}
+    public PMenu(String _name, int _price, Image _img){
         this.name = _name;
         this.price = _price;
         this.img = _img;
+    }
+    public PMenu(String _name, int _price){
+        this.name = _name;
+        this.price = _price;
     }
 }

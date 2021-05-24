@@ -1,6 +1,7 @@
 package com.example.store;
 
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 
 import com.google.android.material.appbar.CollapsingToolbarLayout;
@@ -9,17 +10,43 @@ import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.util.ArrayList;
+
 public class ScrollingActivity extends AppCompatActivity {
+
+    private ArrayList<PMenu> menuList;
+
+    private MenuRecylerViewAdapter menuAdapter;
+    int dataCount = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scrolling);
+
+        RecyclerView recyclerView = findViewById(R.id.recycler_view);
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+
+        menuList = new ArrayList<PMenu>();
+
+        for(int i = 0; i < 20; i++){
+            menuList.add(new PMenu("하와이안 피자", 20000));
+        }
+
+        menuAdapter = new MenuRecylerViewAdapter(menuList);
+        recyclerView.setAdapter(menuAdapter);
+
+        menuAdapter.addItem(new PMenu("웃음꽃 활짝 피자", 500));
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         CollapsingToolbarLayout toolBarLayout = (CollapsingToolbarLayout) findViewById(R.id.toolbar_layout);

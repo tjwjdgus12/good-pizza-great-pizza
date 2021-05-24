@@ -1,12 +1,14 @@
 package com.example.store;
 
+import android.view.Menu;
+
 import java.util.ArrayList;
-import com.example.store.Menu;
+import com.example.store.PMenu;
 
 public class MenuAccessor {
-    private ArrayList<Menu> menu_list;
+    private ArrayList<PMenu> menu_list;
 
-    public ArrayList<Menu> getMenu(){
+    public ArrayList<PMenu> getMenu(){
         return this.menu_list;
     }
 
