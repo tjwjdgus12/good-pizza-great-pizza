@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="8dp"
+    android:paddingLeft="8dp"
+    android:paddingRight="8dp"
+    android:paddingTop="8dp"
+    android:columnCount="3"
+    android:rowCount="6"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/cartMain"
+        android:layout_columnSpan="2"
+        android:layout_gravity="fill_horizontal"
+        android:gravity="center_horizontal"
+        android:textSize="24sp"
+        android:text="장바구니" />
+
+    <Button
+        android:id="@+id/exitButton"
+        android:layout_row="0"
+        android:layout_column="2"
+        android:text="exit" />
+
+    <TextView
+        android:id="@+id/nameText"
+        android:layout_column="0"
+        android:layout_row="1"
+        android:layout_gravity="fill_horizontal"
+        android:gravity="center_horizontal"
+        android:textSize="12sp"
+        android:text="이름" />
+
+    <TextView
+        android:id="@+id/costText"
+        android:layout_column="1"
+        android:layout_row="1"
+        android:layout_gravity="fill_horizontal"
+        android:gravity="center_horizontal"
+        android:textSize="12sp"
+        android:text="가격" />
+
+    <TextView
+        android:id="@+id/countText"
+        android:layout_column="2"
+        android:layout_row="1"
+        android:layout_gravity="fill_horizontal"
+        android:gravity="center_horizontal"
+        android:textSize="12sp"
+        android:text="수량" />
+
+    <ListView
+        android:id="@+id/listview"
+        android:layout_column="0"
+        android:layout_columnSpan="3"
+        android:layout_row="2"
+        android:layout_height="450dp"
+        android:layout_width="380dp"
+        />
+<!--
+    <ListView
+        android:id="@+id/listView"
+        android:layout_column="0"
+        android:layout_row="2"
+        android:layout_height="450dp"
+        android:layout_width="170dp"
+        />
+
+    <ListView
+        android:id="@+id/costs"
+        android:layout_column="1"
+        android:layout_row="2"
+        android:layout_height="450dp"
+        android:layout_width="100dp"
+        />
+
+    <ListView
+        android:id="@+id/counts"
+        android:layout_column="2"
+        android:layout_row="2"
+        android:layout_height="450dp"
+        android:layout_width="40dp"
+        />
+
+-->
+
+    <TextView
+    android:id="@+id/totalText"
+    android:layout_column="0"
+    android:layout_columnSpan="2"
+    android:layout_row="4"
+    android:layout_gravity="fill_horizontal"
+    android:gravity="center_horizontal"
+    android:textSize="20sp"
+    android:text="총 가격:" />
+
+    <TextView
+        android:id="@+id/totalcost"
+        android:layout_column="2"
+        android:layout_row="4"
+        android:layout_gravity="fill_horizontal"
+        android:gravity="center_horizontal"
+        android:textSize="20sp"
+        android:text="60000원" />
+
+    <Button
+        android:id="@+id/orderButton"
+        android:layout_column="2"
+        android:layout_row="5"
+        android:text="Order" />
+
+</GridLayout>
