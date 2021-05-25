@@ -1,12 +1,10 @@
 package com.example.store;
 
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -23,7 +21,7 @@ public class ScrollingActivity extends AppCompatActivity {
 
     private ArrayList<PMenu> menuList;
 
-    private MenuRecylerViewAdapter menuAdapter;
+    private MenuRecyclerViewAdapter menuAdapter;
     int dataCount = -1;
 
     @Override
@@ -40,7 +38,7 @@ public class ScrollingActivity extends AppCompatActivity {
         MenuAccessor mAccess = new MenuAccessor(20);
         menuList = mAccess.getMenu();
 
-        menuAdapter = new MenuRecylerViewAdapter(menuList);
+        menuAdapter = new MenuRecyclerViewAdapter(menuList);
         recyclerView.setAdapter(menuAdapter);
 
 

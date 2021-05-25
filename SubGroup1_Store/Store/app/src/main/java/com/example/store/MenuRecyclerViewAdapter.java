@@ -3,6 +3,8 @@ package com.example.store;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -11,25 +13,27 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class MenuRecylerViewAdapter extends RecyclerView.Adapter<MenuRecylerViewAdapter.ItemViewHolder> {
+public class MenuRecyclerViewAdapter extends RecyclerView.Adapter<MenuRecyclerViewAdapter.ItemViewHolder> {
 
     private ArrayList<PMenu> menuList;
     private int position;
 
-    public MenuRecylerViewAdapter(ArrayList<PMenu> list) {
+    public MenuRecyclerViewAdapter(ArrayList<PMenu> list) {
         this.menuList = list;
     }
 
     public class ItemViewHolder extends RecyclerView.ViewHolder {
         protected TextView name;
         protected TextView price;
-        //protected ImageView image;
+        protected Button button;
+        protected ImageView image;
 
         public ItemViewHolder(@NonNull final View itemView) {
             super(itemView);
             this.name = itemView.findViewById(R.id.name_view);
             this.price = itemView.findViewById(R.id.price_view);
-            //this.image = itemView.findViewById(R.id.image);
+            this.button = itemView.findViewById(R.id.add_button);
+            this.image = itemView.findViewById(R.id.image_view);
         }
 
         public void onBind(PMenu menu) {
@@ -50,13 +54,21 @@ public class MenuRecylerViewAdapter extends RecyclerView.Adapter<MenuRecylerView
     public void onBindViewHolder(@NonNull ItemViewHolder viewholder, final int position){
         viewholder.onBind(menuList.get(position));
 
-        //viewholder.button.setOnClickListener
-
-        viewholder.itemView.setOnClickListener(new View.OnClickListener() {
+        viewholder.image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
-                Toast.makeText(v.getContext(), position + "번째 메뉴 클릭!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(v.getContext(), menuList.get(position).getName() + "의 상세정보가 등록되지 않았습니다.", Toast.LENGTH_SHORT).show();
             }
+        });
+
+        viewholder.button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v){
+                Toast.makeText(v.getContext(), "카트에 " + menuList.get(position).getName() + "가 추가되었습니다.", Toast.LENGTH_SHORT).show();
+            }
+
+            // CartManager.addMenu(menuList.get(position));
+
         });
     }
 
@@ -84,8 +96,4 @@ public class MenuRecylerViewAdapter extends RecyclerView.Adapter<MenuRecylerView
     public void setPosition(int position){
         this.position = position;
     }
-
-    // removeItem
-
-    // delete diaglog
 }
