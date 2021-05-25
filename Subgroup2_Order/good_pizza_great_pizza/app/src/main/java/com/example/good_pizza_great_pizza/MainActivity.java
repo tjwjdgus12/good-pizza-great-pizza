@@ -17,7 +17,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements ListViewBtnAdapter.ListBtnClickListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,11 +28,11 @@ public class MainActivity extends AppCompatActivity {
         ListViewBtnAdapter adapter;
         ArrayList<ListViewBtnItem> items = new ArrayList<ListViewBtnItem>();
         ListViewBtnItem item = new ListViewBtnItem();
-        item.setText_name("콤비네이션 피자");
-        item.setText_cost("17000");
-        item.setText_count("2");
+        item.setText_name("피자");
+        item.setText_cost("1700");
+        item.setText_count("1");
         items.add(item);
-        adapter = new ListViewBtnAdapter(this, R.layout.listview_btn_item, items, (ListViewBtnAdapter.ListBtnClickListener) this);
+        adapter = new ListViewBtnAdapter(this, R.layout.listview_btn_item, items,this);
         listview = (ListView) findViewById(R.id.listview);
         listview.setAdapter(adapter);
 
@@ -129,5 +129,10 @@ public class MainActivity extends AppCompatActivity {
                 alert.show();
             }
         });
+    }
+
+    @Override
+    public void onListBtnClick(int position) {
+        Toast.makeText(this, "수량이 변경되었습니다.", Toast.LENGTH_SHORT).show();
     }
 }
