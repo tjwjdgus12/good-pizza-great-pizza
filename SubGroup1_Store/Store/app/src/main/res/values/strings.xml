@@ -1,7 +1,4 @@
 <resources>
     <string name="app_name">Store</string>
-    <string name="large_text">
-        "메뉴가 띄워질 화면"
-    </string>
     <string name="action_settings">Settings</string>
 </resources>

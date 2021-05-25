@@ -34,7 +34,7 @@ public class MenuRecylerViewAdapter extends RecyclerView.Adapter<MenuRecylerView
 
         public void onBind(PMenu menu) {
             name.setText(menu.getName());
-            price.setText(menu.getPrice());
+            price.setText(Integer.toString(menu.getPrice()));
         }
     }
 
@@ -55,7 +55,7 @@ public class MenuRecylerViewAdapter extends RecyclerView.Adapter<MenuRecylerView
         viewholder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
-                Toast.makeText(v.getContext(), position + "번째 메뉴 클릭!", Toast.LENGTH_SHORT);
+                Toast.makeText(v.getContext(), position + "번째 메뉴 클릭!", Toast.LENGTH_SHORT).show();
             }
         });
     }
