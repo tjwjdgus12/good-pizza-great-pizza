@@ -36,11 +36,10 @@ public class ScrollingActivity extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-        menuList = new ArrayList<PMenu>();
+        //initialization of menuList
+        MenuAccessor mAccess = new MenuAccessor(20);
+        menuList = mAccess.getMenu();
 
-        for(int i = 0; i < 20; i++){
-            menuList.add(new PMenu("하와이안 피자", 20000));
-        }
 
         menuAdapter = new MenuRecylerViewAdapter(menuList);
         recyclerView.setAdapter(menuAdapter);
