@@ -2,12 +2,14 @@ package com.example.store;
 
 import android.media.Image;
 
-//Is it right to use Image class?
+//Is it right to use Image class? or BufferedImage?
 public class PMenu {
+    //attributes
     private String name;
     private int price;
     private Image img;
 
+    //getter
     public String getName(){
         return this.name;
     }
@@ -18,14 +20,20 @@ public class PMenu {
         return this.img;
     }
 
-    public PMenu(){}
-    public PMenu(String _name, int _price, Image _img){
-        this.name = _name;
-        this.price = _price;
-        this.img = _img;
+    //Initializers
+    public PMenu(){
+        this.name = "Hawaiian Pizza";
+        this.price = 20000;
+        this.img = null;
     }
     public PMenu(String _name, int _price){
         this.name = _name;
         this.price = _price;
+        this.img = null;
+    }
+    public PMenu(String _name, int _price, Image _img){
+        this.name = _name;
+        this.price = _price;
+        this.img = _img;
     }
 }
