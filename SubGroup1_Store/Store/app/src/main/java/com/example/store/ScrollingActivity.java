@@ -40,11 +40,9 @@ public class ScrollingActivity extends AppCompatActivity {
         MenuAccessor mAccess = new MenuAccessor(20);
         menuList = mAccess.getMenu();
 
-
         menuAdapter = new MenuRecylerViewAdapter(menuList);
         recyclerView.setAdapter(menuAdapter);
 
-        menuAdapter.addItem(new PMenu("웃음꽃 활짝 피자", 500));
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

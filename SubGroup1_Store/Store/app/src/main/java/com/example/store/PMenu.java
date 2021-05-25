@@ -26,14 +26,14 @@ public class PMenu {
         this.price = 20000;
         this.img = null;
     }
-    public PMenu(String _name, int _price){
-        this.name = _name;
-        this.price = _price;
+    public PMenu(String name, int price){
+        this.name = name;
+        this.price = price;
         this.img = null;
     }
-    public PMenu(String _name, int _price, Image _img){
-        this.name = _name;
-        this.price = _price;
-        this.img = _img;
+    public PMenu(String name, int price, Image img){
+        this.name = name;
+        this.price = price;
+        this.img = img;
     }
 }
