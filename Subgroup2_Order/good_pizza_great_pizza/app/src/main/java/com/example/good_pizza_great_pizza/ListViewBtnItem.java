@@ -5,6 +5,12 @@ public class ListViewBtnItem {
     private String cost;
     private String count;
 
+    public ListViewBtnItem(String name, String cost, String count){
+        this.name = name;
+        this.cost = cost;
+        this.count = count;
+    }
+
     public void setText_name(String text) {
         name = text ;
     }

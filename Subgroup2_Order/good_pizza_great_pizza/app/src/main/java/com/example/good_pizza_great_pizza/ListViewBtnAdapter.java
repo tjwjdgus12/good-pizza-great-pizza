@@ -20,6 +20,7 @@ import java.util.ArrayList;
 
 public class ListViewBtnAdapter extends ArrayAdapter implements View.OnClickListener  {
     // 버튼 클릭 이벤트를 위한 Listener 인터페이스 정의.
+
     public interface ListBtnClickListener {
         void onListBtnClick(int position) ;
     }
@@ -74,13 +75,14 @@ public class ListViewBtnAdapter extends ArrayAdapter implements View.OnClickList
             }
         });
 
-        // button2의 TAG에 position값 지정. Adapter를 click listener로 지정.
         Button button2 = (Button) convertView.findViewById(R.id.button2);
         button2.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
                 int pre_value = Integer.parseInt(textTextView3.getText().toString());
+                if(pre_value == 0) return;
                 textTextView3.setText(Integer.toString(pre_value-1));
             }
+
         });
 
         return convertView;

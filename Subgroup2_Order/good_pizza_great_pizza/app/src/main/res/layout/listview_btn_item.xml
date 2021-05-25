@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="8dp"
+    android:paddingTop="8dp"
+    android:paddingLeft="8dp"
+    android:paddingRight="8dp"
+    >
     <TextView
-        android:layout_width="130dp"
+        android:layout_width="90dp"
         android:layout_height="50dp"
         android:text="피자이름"
         android:id="@+id/name"
@@ -13,7 +20,7 @@
         android:layout_weight="40" />
 
     <TextView
-    android:layout_width="60dp"
+    android:layout_width="80dp"
     android:layout_height="50dp"
     android:text="가격"
     android:id="@+id/cost"
@@ -23,7 +30,7 @@
     android:layout_weight="20" />
 
     <TextView
-        android:layout_width="20dp"
+        android:layout_width="30dp"
         android:layout_height="50dp"
         android:text="수량"
         android:id="@+id/count"
@@ -34,18 +41,20 @@
 
     <Button
         android:id="@+id/button1"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:text="UP"
-        android:textSize="8sp"
-        android:layout_weight="1" />
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_weight="1"
+        android:background="@drawable/left"
+        app:backgroundTint="#00FFFFFF"
+        app:backgroundTintMode="add" />
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:text="DOWN"
-        android:textSize="8sp"
-        android:layout_weight="1" />
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_weight="1"
+        android:background="@drawable/right"
+        app:backgroundTint="#00FFFFFF"
+        app:backgroundTintMode="add" />
 
 </LinearLayout>

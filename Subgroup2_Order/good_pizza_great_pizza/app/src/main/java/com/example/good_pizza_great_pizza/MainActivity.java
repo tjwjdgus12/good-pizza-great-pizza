@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class MainActivity extends AppCompatActivity implements ListViewBtnAdapter.ListBtnClickListener{
 
@@ -27,11 +28,18 @@ public class MainActivity extends AppCompatActivity implements ListViewBtnAdapte
         ListView listview;
         ListViewBtnAdapter adapter;
         ArrayList<ListViewBtnItem> items = new ArrayList<ListViewBtnItem>();
-        ListViewBtnItem item = new ListViewBtnItem();
-        item.setText_name("피자");
-        item.setText_cost("1700");
-        item.setText_count("1");
-        items.add(item);
+
+        ListViewBtnItem item1 = new ListViewBtnItem("콤비네이션 피자", "17000", "1");
+        ListViewBtnItem item2 = new ListViewBtnItem("하와이안 피자", "19000", "1");
+        ListViewBtnItem item3 = new ListViewBtnItem("치즈 피자", "15000", "1");
+        ListViewBtnItem item4 = new ListViewBtnItem("고구마 피자", "16000", "1");
+        ListViewBtnItem item5 = new ListViewBtnItem("디럭스 불고기 피자", "180000", "1");
+        items.add(item1);
+        items.add(item2);
+        items.add(item3);
+        items.add(item4);
+        items.add(item5);
+
         adapter = new ListViewBtnAdapter(this, R.layout.listview_btn_item, items,this);
         listview = (ListView) findViewById(R.id.listview);
         listview.setAdapter(adapter);
@@ -43,67 +51,14 @@ public class MainActivity extends AppCompatActivity implements ListViewBtnAdapte
             }
         }) ;
 
-
-
-        /*String[] items = {
-                "콤비네이션 피자",
-                "하와이안 피자",
-                "치즈 피자",
-                "포테이토 피자",
-                "고구마 피자",
-                "불고기 피자",
-                "페페로니 피자",
-        };
-
-        String[] costs = {
-                "17000",
-                "20000",
-                "15000",
-                "17000",
-                "17000",
-                "18000",
-                "16000",
-        };
-
-        String[] counts = {
-                "2",
-                "2",
-                "2",
-                "3",
-                "1",
-                "1",
-                "1",
-        };
-        Button[] btn = {};
-
         TextView totalcostText = (TextView) findViewById(R.id.totalcost);
         int totalcost = 0;
-        for(int i = 0;i < costs.length;i++){
-            totalcost += Integer.parseInt(costs[i]) * Integer.parseInt(counts[i]);
+        for(ListViewBtnItem it : items){
+            totalcost += Integer.parseInt(it.getText_cost()) * Integer.parseInt(it.getText_count());
         }
         totalcostText.setText(Integer.toString(totalcost).concat("원"));
 
 
-        ListAdapter adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, items);
-        ListView listView = (ListView) findViewById(R.id.listView);
-        listView.setAdapter(adapter);
-        ListAdapter adapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, costs);
-        ListView listView2 = (ListView) findViewById(R.id.costs);
-        listView2.setAdapter(adapter2);
-        ListAdapter adapter3 = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, counts);
-        ListView listView3 = (ListView) findViewById(R.id.counts);
-        listView3.setAdapter(adapter3);
-
-        listView.setOnItemClickListener(
-                new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        String item = String.valueOf(parent.getItemAtPosition(position));
-                        Toast.makeText(MainActivity.this, item, Toast.LENGTH_SHORT).show();
-                    }
-                }
-        );
-        */
         Button exitButton = (Button) findViewById(R.id.exitButton);
         exitButton.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -133,6 +88,6 @@ public class MainActivity extends AppCompatActivity implements ListViewBtnAdapte
 
     @Override
     public void onListBtnClick(int position) {
-        Toast.makeText(this, "수량이 변경되었습니다.", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "수량이 변경되었습니다.", Toast.LENGTH_LONG).show();
     }
 }
