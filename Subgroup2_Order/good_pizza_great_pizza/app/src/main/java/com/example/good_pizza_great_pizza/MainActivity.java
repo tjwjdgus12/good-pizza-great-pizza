@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -19,7 +20,13 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 public class MainActivity extends AppCompatActivity implements ListViewBtnAdapter.ListBtnClickListener{
+    ArrayList<ListViewBtnItem> items;
 
+    public void adapterLink() {
+        ListViewBtnAdapter adapter = new ListViewBtnAdapter(this, R.layout.listview_btn_item, items,this);
+        ListView listview = (ListView) findViewById(R.id.listview);
+        listview.setAdapter(adapter);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements ListViewBtnAdapte
 
         ListView listview;
         ListViewBtnAdapter adapter;
-        ArrayList<ListViewBtnItem> items = new ArrayList<ListViewBtnItem>();
+        items = new ArrayList<ListViewBtnItem>();
 
         ListViewBtnItem item1 = new ListViewBtnItem("콤비네이션 피자", "17000", "1");
         ListViewBtnItem item2 = new ListViewBtnItem("하와이안 피자", "19000", "1");
@@ -40,9 +47,9 @@ public class MainActivity extends AppCompatActivity implements ListViewBtnAdapte
         items.add(item4);
         items.add(item5);
 
-        adapter = new ListViewBtnAdapter(this, R.layout.listview_btn_item, items,this);
+
         listview = (ListView) findViewById(R.id.listview);
-        listview.setAdapter(adapter);
+        adapterLink();
 
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -57,7 +64,6 @@ public class MainActivity extends AppCompatActivity implements ListViewBtnAdapte
             totalcost += Integer.parseInt(it.getText_cost()) * Integer.parseInt(it.getText_count());
         }
         totalcostText.setText(Integer.toString(totalcost).concat("원"));
-
 
         Button exitButton = (Button) findViewById(R.id.exitButton);
         exitButton.setOnClickListener(new View.OnClickListener(){
@@ -87,7 +93,16 @@ public class MainActivity extends AppCompatActivity implements ListViewBtnAdapte
     }
 
     @Override
-    public void onListBtnClick(int position) {
+    public void onListBtnClick() {
         Toast.makeText(this, "수량이 변경되었습니다.", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void updateTotalCost(int change) {
+        TextView totalcostText = (TextView) findViewById(R.id.totalcost);
+        String tx = totalcostText.getText().toString();
+        int currentCost = Integer.parseInt(tx.substring(0,tx.length()-1));
+        currentCost += change;
+        totalcostText.setText(Integer.toString(currentCost).concat("원"));
     }
 }

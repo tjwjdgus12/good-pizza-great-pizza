@@ -20,16 +20,15 @@ import java.util.ArrayList;
 
 public class ListViewBtnAdapter extends ArrayAdapter implements View.OnClickListener  {
     // 버튼 클릭 이벤트를 위한 Listener 인터페이스 정의.
-
     public interface ListBtnClickListener {
-        void onListBtnClick(int position) ;
+        void onListBtnClick() ;
+        void updateTotalCost(int change);
     }
 
     // 생성자로부터 전달된 resource id 값을 저장.
     int resourceId ;
     // 생성자로부터 전달된 ListBtnClickListener  저장.
     private ListBtnClickListener listBtnClickListener ;
-
 
     // ListViewBtnAdapter 생성자. 마지막에 ListBtnClickListener 추가.
     ListViewBtnAdapter(Context context, int resource, ArrayList<ListViewBtnItem> list, ListBtnClickListener clickListener) {
@@ -39,6 +38,10 @@ public class ListViewBtnAdapter extends ArrayAdapter implements View.OnClickList
         this.resourceId = resource ;
 
         this.listBtnClickListener = clickListener ;
+    }
+
+    public int getResourceId() {
+        return resourceId;
     }
 
     // 새롭게 만든 Layout을 위한 View를 생성하는 코드
@@ -72,6 +75,9 @@ public class ListViewBtnAdapter extends ArrayAdapter implements View.OnClickList
             public void onClick(View v) {
                 int pre_value = Integer.parseInt(textTextView3.getText().toString());
                 textTextView3.setText(Integer.toString(pre_value+1));
+                int change = Integer.parseInt(textTextView2.getText().toString());
+                listBtnClickListener.updateTotalCost(change);
+
             }
         });
 
@@ -81,17 +87,18 @@ public class ListViewBtnAdapter extends ArrayAdapter implements View.OnClickList
                 int pre_value = Integer.parseInt(textTextView3.getText().toString());
                 if(pre_value == 0) return;
                 textTextView3.setText(Integer.toString(pre_value-1));
+                int change = (-1) * Integer.parseInt(textTextView2.getText().toString());
+                listBtnClickListener.updateTotalCost(change);
             }
 
         });
-
         return convertView;
     }
 
     public void onClick(View v) {
         // ListBtnClickListener(MainActivity)의 onListBtnClick() 함수 호출.
         if (this.listBtnClickListener != null) {
-            this.listBtnClickListener.onListBtnClick((int)v.getTag()) ;
+            this.listBtnClickListener.onListBtnClick() ;
         }
     }
 
