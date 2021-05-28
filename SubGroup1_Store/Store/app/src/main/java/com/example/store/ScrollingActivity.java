@@ -35,7 +35,7 @@ public class ScrollingActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
 
         //initialization of menuList
-        MenuAccessor mAccess = new MenuAccessor(20);
+        MenuAccessor mAccess = new MenuAccessor();
         menuList = mAccess.getMenu();
 
         menuAdapter = new MenuRecyclerViewAdapter(menuList);

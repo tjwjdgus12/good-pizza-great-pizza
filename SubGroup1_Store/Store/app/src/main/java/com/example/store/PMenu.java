@@ -7,8 +7,7 @@ public class PMenu {
     //attributes
     private String name;
     private int price;
-    /*private Image img;*/
-    int img;
+    private int img;
 
     //getter
     public String getName(){

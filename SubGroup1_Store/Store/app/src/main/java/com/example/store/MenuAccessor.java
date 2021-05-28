@@ -12,8 +12,7 @@ public class MenuAccessor {
     }
 
     //Initializers
-    public MenuAccessor(){}
-    public MenuAccessor(int num) {
+    public MenuAccessor() {
         //for test
         menu_list = new ArrayList<PMenu>();
         menu_list.add(new PMenu("하와이안 피자", 20000, R.drawable.hawaiian_pizza));
