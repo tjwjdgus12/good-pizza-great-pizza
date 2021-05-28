@@ -4,6 +4,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -104,5 +105,10 @@ public class MainActivity extends AppCompatActivity implements ListViewBtnAdapte
         int currentCost = Integer.parseInt(tx.substring(0,tx.length()-1));
         currentCost += change;
         totalcostText.setText(Integer.toString(currentCost).concat("원"));
+    }
+
+    public void gotoOrder(View view){
+        Intent intent = new Intent(this, OrderActivity.class);
+        startActivity(intent);
     }
 }
