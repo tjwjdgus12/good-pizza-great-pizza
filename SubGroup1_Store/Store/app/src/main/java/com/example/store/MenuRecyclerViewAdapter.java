@@ -39,6 +39,8 @@ public class MenuRecyclerViewAdapter extends RecyclerView.Adapter<MenuRecyclerVi
         public void onBind(PMenu menu) {
             name.setText(menu.getName());
             price.setText(Integer.toString(menu.getPrice()));
+            /* 이창민 수정) 이미지 변경 가능: MenuAccessor에서 R.drawable 값 바꾸면 됨 */
+            image.setImageResource(menu.getImage());
         }
     }
 
