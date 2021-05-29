@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#00FFFFFF"
     android:fitsSystemWindows="true"
     android:scrollbarTrackVertical="@android:drawable/ic_dialog_info"
     tools:context=".ScrollingActivity">
@@ -18,7 +19,7 @@
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:id="@+id/toolbar_layout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="155dp"
             android:fitsSystemWindows="true"
             app:contentScrim="?attr/colorPrimary"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
@@ -34,15 +35,33 @@
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
-    <include layout="@layout/content_scrolling" />
+    <include
+        android:id="@+id/content"
+        layout="@layout/content_scrolling" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="86dp"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/fab_margin"
+        android:background="#FFFFFF"
+        app:backgroundTint="@color/teal_200"
         app:layout_anchor="@id/app_bar"
         app:layout_anchorGravity="bottom|end"
         app:srcCompat="@android:drawable/ic_dialog_info" />
+
+    <ImageButton
+        android:id="@+id/cart_button"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_margin="20dp"
+        android:alpha="0.88"
+        android:background="@drawable/round_button"
+        android:padding="5dp"
+        android:scaleType="fitXY"
+        app:layout_anchor="@id/content"
+        app:layout_anchorGravity="bottom|end"
+        app:srcCompat="@drawable/shopping_cart"
+        tools:srcCompat="@drawable/shopping_cart" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
