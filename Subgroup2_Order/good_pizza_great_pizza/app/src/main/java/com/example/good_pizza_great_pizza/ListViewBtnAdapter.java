@@ -75,6 +75,7 @@ public class ListViewBtnAdapter extends ArrayAdapter implements View.OnClickList
             public void onClick(View v) {
                 int pre_value = Integer.parseInt(textTextView3.getText().toString());
                 textTextView3.setText(Integer.toString(pre_value+1));
+                listViewItem.setText_count(Integer.toString(pre_value+1));
                 int change = Integer.parseInt(textTextView2.getText().toString());
                 listBtnClickListener.updateTotalCost(change);
 
@@ -87,6 +88,7 @@ public class ListViewBtnAdapter extends ArrayAdapter implements View.OnClickList
                 int pre_value = Integer.parseInt(textTextView3.getText().toString());
                 if(pre_value == 0) return;
                 textTextView3.setText(Integer.toString(pre_value-1));
+                listViewItem.setText_count(Integer.toString(pre_value-1));
                 int change = (-1) * Integer.parseInt(textTextView2.getText().toString());
                 listBtnClickListener.updateTotalCost(change);
             }

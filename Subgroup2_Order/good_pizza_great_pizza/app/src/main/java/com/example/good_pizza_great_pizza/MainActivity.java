@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements ListViewBtnAdapte
         ListViewBtnItem item2 = new ListViewBtnItem("하와이안 피자", "19000", "1");
         ListViewBtnItem item3 = new ListViewBtnItem("치즈 피자", "15000", "1");
         ListViewBtnItem item4 = new ListViewBtnItem("고구마 피자", "16000", "1");
-        ListViewBtnItem item5 = new ListViewBtnItem("디럭스 불고기 피자", "180000", "1");
+        ListViewBtnItem item5 = new ListViewBtnItem("디럭스 불고기 피자", "18000", "1");
         items.add(item1);
         items.add(item2);
         items.add(item3);
@@ -109,6 +109,15 @@ public class MainActivity extends AppCompatActivity implements ListViewBtnAdapte
 
     public void gotoOrder(View view){
         Intent intent = new Intent(this, OrderActivity.class);
+        intent.putExtra("menu_num", items.size());
+
+        int cnt = 0;
+        for (ListViewBtnItem it : items){
+            intent.putExtra("menu_name".concat(Integer.toString(cnt)), it.getText_name());
+            intent.putExtra("menu_cost".concat(Integer.toString(cnt)), it.getText_cost());
+            intent.putExtra("menu_count".concat(Integer.toString(cnt)), it.getText_count());
+            cnt += 1;
+        }
         startActivity(intent);
     }
 }
