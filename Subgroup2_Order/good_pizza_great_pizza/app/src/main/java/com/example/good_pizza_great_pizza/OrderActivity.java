@@ -27,22 +27,34 @@ public class OrderActivity extends AppCompatActivity {
         Intent intent = getIntent();
         int n = intent.getIntExtra("menu_num", 0);
 
-        String[] name = new String[n];
-        String[] cost = new String[n];
-        String[] count = new String[n];
-        String[] sum = new String[n];
+        ArrayList<String> name = new ArrayList<String>();
+        ArrayList<String> cost = new ArrayList<String>();
+        ArrayList<String> count = new ArrayList<String>();
+        ArrayList<String> sum = new ArrayList<String>();
+        ArrayList<Integer> isEmpty = new ArrayList<Integer>();
 
         for(int i = 0;i < n;i++){
-            count[i] = intent.getStringExtra("menu_count".concat(Integer.toString(i)));
-            name[i] = intent.getStringExtra("menu_name".concat(Integer.toString(i)));
-            cost[i] = intent.getStringExtra("menu_cost".concat(Integer.toString(i)));
-            sum[i] = Integer.toString((Integer.parseInt(cost[i]) * Integer.parseInt(count[i])));
+            count.add(intent.getStringExtra("menu_count".concat(Integer.toString(i))));
+            if (Integer.parseInt(count.get(i)) == 0) {
+                isEmpty.add(i);
+            }
+            name.add(intent.getStringExtra("menu_name".concat(Integer.toString(i))));
+            cost.add(intent.getStringExtra("menu_cost".concat(Integer.toString(i))));
+            sum.add(Integer.toString((Integer.parseInt(cost.get(i)) * Integer.parseInt(count.get(i)))));
+        }
+
+        for (int i = 0; i < isEmpty.size(); i++) {
+            int rIdx = isEmpty.get(i);
+            name.remove(rIdx-i);
+            cost.remove(rIdx-i);
+            count.remove(rIdx-i);
+            sum.remove(rIdx-i);
         }
 
         TextView totalcostText = (TextView) findViewById(R.id.totalcost);
         int totalcost = 0;
-        for(int i = 0;i < n;i++){
-            totalcost += Integer.parseInt(sum[i]);
+        for(int i = 0;i < n-isEmpty.size();i++){
+            totalcost += Integer.parseInt(sum.get(i));
         }
         totalcostText.setText(Integer.toString(totalcost).concat("원"));
 
@@ -67,7 +79,7 @@ public class OrderActivity extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 AlertDialog.Builder builder = new AlertDialog.Builder(OrderActivity.this);
-                builder.setMessage("장바구니로 돌아가시겠습니가?");
+                builder.setMessage("장바구니로 돌아가시겠습니까?");
                 builder.setTitle("결제 취소")
                         .setCancelable(false)
                         .setPositiveButton("YES", new DialogInterface.OnClickListener() {
