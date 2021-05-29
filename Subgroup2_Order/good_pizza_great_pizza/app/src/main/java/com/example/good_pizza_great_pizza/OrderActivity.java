@@ -100,6 +100,32 @@ public class OrderActivity extends AppCompatActivity {
             }
         });
 
+        Button orderButton = (Button) findViewById(R.id.orderButton);
+        orderButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                AlertDialog.Builder builder = new AlertDialog.Builder(OrderActivity.this);
+                builder.setMessage("결제창 입니다.");
+                builder.setTitle("결제")
+                        .setCancelable(false)
+                        .setPositiveButton("결제", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.cancel();
+                            }
+                        })
+                        .setNegativeButton("취소", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.cancel();
+                            }
+                        });
+                AlertDialog alert = builder.create();
+                alert.setTitle("결제 창");
+                alert.show();
+            }
+        });
+
     }
 
 }
